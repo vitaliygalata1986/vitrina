@@ -1,18 +1,16 @@
 function Header() {
   return (
-    <nav className="green darken-1">
-      <div className="nav-wrapper">
-        <a href="/" className="brand-logo">
-          React Shop
-        </a>
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
+    <nav className='green darken-1'>
+      <div className='nav-wrapper'>
+        <div className='brand-logo'>React Shop</div>
+        <ul id='nav-mobile' className='right'>
           <li>
             <a
-              href="https://github.com/vitaliygalata1986/react-shop-redux"
-              target="_blank"
-              rel="noreferrer"
+              href='https://github.com/vitaliygalata1986/vitrina'
+              target='_blank'
+              rel='noreferrer'
             >
-              GitHub repository
+              Link to GitHub repository
             </a>
           </li>
         </ul>

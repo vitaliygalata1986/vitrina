@@ -12,6 +12,7 @@ export type GoodsResponse = {
 const initialState = {
   goods: [] as GoodsItemProps[],
   loading: true,
+  visibleCountProduct: 12,
 };
 
 export const fetchGoods = createAsyncThunk<
@@ -28,9 +29,9 @@ export const fetchGoods = createAsyncThunk<
     return response.data;
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
-     return thunkAPI.rejectWithValue(
-       error.response?.data.message || 'Ошибка загрузки товаров'
-     );
+      return thunkAPI.rejectWithValue(
+        error.response?.data.message || 'Ошибка загрузки товаров'
+      );
     }
     return thunkAPI.rejectWithValue('Неизвестная ошибка');
   }
@@ -39,7 +40,11 @@ export const fetchGoods = createAsyncThunk<
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    showMore: (state) => {
+      state.visibleCountProduct += 12; // Увеличиваем количество отображаемых товаров
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchGoods.fulfilled, (state, action) => {
       state.goods = action.payload.shop;
@@ -54,9 +59,10 @@ const productsSlice = createSlice({
     });
   },
 });
-
-export const selectAllGoods = (state: RootState) => state.products.goods;
+export const { showMore } = productsSlice.actions;
 export const selectLoading = (state: RootState) => state.products.loading;
+export const selectVisibleCount = (state: RootState) =>
+  state.products.visibleCountProduct;
 export default productsSlice.reducer;
 
 /*
