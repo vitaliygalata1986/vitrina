@@ -11,8 +11,9 @@ This project is built using:
 1. **React**
 2. **TypeScript**
 3. **Redux Toolkit**
-4. **Axios**
-4. **Materialize**
+4. **RTK Query**
+5. **Axios**
+6. **Materialize**
 
 ## 🔧 Installation and launch
 

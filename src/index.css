@@ -58,6 +58,16 @@ nav {
   padding: 1rem;
 }
 
+.card-reset {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-reset .btn {
+  align-self: flex-start;
+}
+
 @media (max-width: 767px) {
   .cart {
     top: 4rem;

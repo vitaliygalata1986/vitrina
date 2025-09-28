@@ -12,8 +12,12 @@ function GoodsItem({
   displayAssets,
 }: GoodsItemProps) {
   const priceProduct = price.regularPrice;
-  let imageGoods:string = '';
-  displayAssets.forEach((el) => (imageGoods = el.full_background));
+  let imageGoods: string = '';
+  if (displayAssets && displayAssets.length > 0) {
+    imageGoods = displayAssets[0].full_background;
+  } else {
+    imageGoods = `${import.meta.env.BASE_URL}default-image.jpg`;
+  }
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -24,7 +28,7 @@ function GoodsItem({
       </div>
       <div className="card-content">
         <span className="card-title">{displayName}</span>
-        <p>{displayDescription}</p>
+        {displayDescription && <p>{displayDescription}</p>}
       </div>
       <div className="card-action">
         <Button
